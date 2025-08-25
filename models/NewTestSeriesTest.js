@@ -1,0 +1,74 @@
+const mongoose = require("mongoose");
+
+const NewTestSeriesTestSchema = new mongoose.Schema({
+  admin: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "adminTeacherTable",
+  },
+  TestSeries: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "NewTestSeriesTable",
+  },
+  TestTitle: {
+    type: String,
+  },
+  Test_code: {
+    type: String,
+  },
+  instructions: {
+    type: String,
+  },
+  starting_date: {
+    type: String,
+  },
+  created_at: {
+    type: String,
+  },
+  No_of_questions: {
+    type: Number,
+  },
+  question_paper: {
+    type: Object,
+  },
+  answer_template: {
+    type: Object,
+  },
+  totalMarks: {
+    type: String,
+  },
+  question_paper_type: {
+    type: String,
+    enum: ["subjective", "objective"],
+  },
+  updated_at: {
+    type: String,
+    default: formatDate(new Date()),
+  },
+  negativemarking: {
+    type: Boolean,
+  },
+  negativeMarks: {
+    type: String,
+    default: "",
+  },
+  eachQueMarks: {
+    type: String,
+    default: "",
+  },
+  duration: {
+    type: String,
+  },
+  is_manual: {
+    type: Boolean,
+    default: true,
+  },
+} , { timestamps : true });
+
+const NewTestSeriesTestTable = new mongoose.model(
+  "NewTestSeriesTestTable",
+  NewTestSeriesTestSchema
+);
+
+module.exports = {
+  TestSeriesTestTable,
+};
